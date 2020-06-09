@@ -9,7 +9,7 @@ trigger:
 pool:
   vmImage: 'Ubuntu-18.04'
   demands:
-  -npm
+  - npm
 
 variables:
   buildConfiguration: 'Release'
@@ -33,6 +33,8 @@ steps:
   displayName: 'Run Gulp tasks'
 
 - script: 'echo "$(Build.DefinitionName), $(Build.BuildId), $(Build.BuildNumber)" > buildinfo.txt'
+  displayName: 'Write build info'
+  workingDirectory: Tailsping.SpaceGame.Web/wwwroot
 
 - task: DotNetCoreCLI@2
   displayName: 'Restore project dependencies'
